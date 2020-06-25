@@ -9,7 +9,7 @@ import { ModalDialogService } from '../../services/modal-dialog.service';
   styleUrls: ['./equipos.component.css']
 })
 export class EquiposComponent implements OnInit {
-  EstadoRead: Boolean = false;
+  EstadoId: Boolean = false;
   Titulo = "Equipos";
 
   TituloAccionABMC = {
@@ -76,10 +76,10 @@ export class EquiposComponent implements OnInit {
   }
 
   // Obtengo un registro especifico según el Id
-  BuscarPorId(Emp, AccionABMC) {
+  BuscarPorId(Equi, AccionABMC) {
     window.scroll(0, 0); // ir al incio del scroll
 
-    this.EquiposServicio.getById(Emp.IdEquipo).subscribe((res: any) => {
+    this.EquiposServicio.getById(Equi.IdEquipo).subscribe((res: any) => {
       this.FormReg.patchValue(res);
       //formatear fecha de  ISO 8061 a string dd/MM/yyyy
       var arrFecha = res.FechaFundacion.substr(0, 10).split("-");
@@ -90,18 +90,18 @@ export class EquiposComponent implements OnInit {
     });
   }
 
-  Consultar(Emp) {
-    this.BuscarPorId(Emp, "C");
+  Consultar(Equi) {
+    this.BuscarPorId(Equi, "C");
   }
 
   // comienza la modificacion, luego la confirma con el metodo Grabar
-  Modificar(Emp) {
-    this.EstadoRead = true;
+  Modificar(Equi) {
+    this.EstadoId = true;
     this.submitted = false;
     this.FormReg.markAsPristine();
     this.FormReg.markAsUntouched();
     this.FormReg.controls.IdEquipo.disabled;
-    this.BuscarPorId(Emp, "M");
+    this.BuscarPorId(Equi, "M");
   }
 
   // grabar tanto altas como modificaciones
@@ -146,7 +146,7 @@ export class EquiposComponent implements OnInit {
   }
 
   // representa la baja logica
-  Eliminar(Emp) {
+  Eliminar(Equi) {
     this.modalDialogService.Confirm(
       "Esta seguro de Eliminar este registro?",
       undefined,
@@ -154,7 +154,7 @@ export class EquiposComponent implements OnInit {
       undefined,
       () =>
         this.EquiposServicio
-          .delete(Emp.IdEquipo)
+          .delete(Equi.IdEquipo)
           .subscribe((res: any) => this.Buscar()),
       null
     );
@@ -163,6 +163,6 @@ export class EquiposComponent implements OnInit {
   // Volver desde Agregar/Modificar
   Volver() {
     this.AccionABMC = "L";
-    this.EstadoRead = false;
+    this.EstadoId = false;
   }
 }
