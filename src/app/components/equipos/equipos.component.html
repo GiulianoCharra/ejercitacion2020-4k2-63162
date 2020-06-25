@@ -1,17 +1,17 @@
 <h3>{{Titulo}} <small>{{TituloAccionABMC[AccionABMC]}}</small></h3>
 
 <!-- Formulario Filtro de busqueda, se ve cuando la accion es Listado(busqueda/listado)-->
+
 <form name="FormFiltro" [formGroup]='FormFiltro' class="bg-light" *ngIf="AccionABMC == 'L'">
 	<div class="form-group row">
-		
-		</div>
-			<!-- Botones -->
-		<div class="row justify-content-center">
-			<button type="button" class="btn btn-primary" (click)="Agregar()">
+	</div>
+	<!-- Botones -->
+	<div class="row justify-content-center">
+		<button type="button" class="btn btn-primary" (click)="Agregar()">
 	    <span class="fas fa-plus"> </span> 
 	            Agregar
 	    </button>
-		</div>
+	</div>
 </form>
 
 <!-- Tabla de resutados de busqueda y Paginador-->
@@ -56,88 +56,67 @@
 <form name="FormReg" [formGroup]='FormReg' *ngIf="AccionABMC != 'L'" class="bg-light">
 
 	<fieldset [disabled]="AccionABMC==='C'">
-		<!--campo RazonSocial-->
+
+		<!--campo IdEquipo-->
 		<div class="form-group row">
-			<label class="col-form-label col-sm-2 col-sm-offset-2" for="RazonSocial">Razon Social <span
-                    class="text-danger">*</span></label>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" formControlName="RazonSocial"
-         [ngClass]="{'is-invalid': (FormReg.controls.RazonSocial.touched || submitted)  
-            && FormReg.controls.RazonSocial.errors}" />
-
-				<span class="text-danger" *ngIf="(FormReg.controls.RazonSocial.touched || submitted) 
-                        && FormReg.controls.RazonSocial.errors?.required">
-                    Dato requerido.
-                </span>
-				<span class="text-danger" *ngIf="(FormReg.controls.RazonSocial.touched || submitted) 
-                       && (FormReg.controls.RazonSocial.errors?.minlength || FormReg.controls.RazonSocial.errors?.maxlength) ">
-                    Dato texto, 2 a 55 caracteres.
-                </span>
-			</div>
-		</div>
-
-  <!--campo Idequiresa-->
-		<div class="form-group row" >
-			<label class="col-form-label col-sm-2 col-sm-offset-2" for="Idequiresa">
-		                Id equiresa <span class="text-danger">*</span>
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="IdEquipo">
+		                Id Equipo <span class="text-danger">*</span>
 		            </label>
 			<div class="col-sm-6" ng-model="all">
-				<input class="form-control ng-touched ng-pristine ng-valid" type="text" name="Idequiresa" class="form-control" formControlName="Idequiresa" [value]=0 [readonly]="EstadoRead" 
-		        [ngClass]="{'is-invalid': (FormReg.controls.Idequiresa.touched || submitted)  
-		            && FormReg.controls.Idequiresa.errors}" />
-				<span class="text-danger" *ngIf="(FormReg.controls.Idequiresa.touched || submitted) 
-		                        && FormReg.controls.Idequiresa.errors?.required">
+				<input class="form-control ng-touched ng-pristine ng-valid" type="text" name="IdEquipo" class="form-control" formControlName="IdEquipo" [value]=0 [readonly]="EstadoRead"
+		        [ngClass]="{'is-invalid': (FormReg.controls.IdEquipo.touched || submitted)  
+		            && FormReg.controls.IdEquipo.errors}" />
+				<span class="text-danger" *ngIf="(FormReg.controls.IdEquipo.touched || submitted) 
+		                        && FormReg.controls.IdEquipo.errors?.required">
 		                    Dato requerido.
 		                </span>
-				<span class="text-danger" *ngIf="(FormReg.controls.Idequiresa.touched || submitted) 
-		                        && FormReg.controls.Idequiresa.errors?.pattern">
+				<span class="text-danger" *ngIf="(FormReg.controls.IdEquipo.touched || submitted) 
+		                        && FormReg.controls.IdEquipo.errors?.pattern">
 		                    Dato numérico, 1 a 7 dígitos.
 		                </span>
 			</div>
 		</div>
 
-
-		<!--campo Cantidadequileados-->
+		<!--campo EquipoNombre-->
 		<div class="form-group row">
-			<label class="col-form-label col-sm-2 col-sm-offset-2" for="Cantidadequileados">
-                Cantidad de equileados <span class="text-danger">*</span>
-            </label>
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="EquipoNombre">Nombre <span
+                    class="text-danger">*</span></label>
 			<div class="col-sm-6">
-				<input type="text" name="Cantidadequileados" class="form-control" formControlName="Cantidadequileados"
-        [ngClass]="{'is-invalid': (FormReg.controls.Cantidadequileados.touched || submitted)  
-            && FormReg.controls.Cantidadequileados.errors}" />
-				<span class="text-danger" *ngIf="(FormReg.controls.Cantidadequileados.touched || submitted) 
-                       && FormReg.controls.Cantidadequileados.errors?.required">
+				<input type="text" class="form-control" formControlName="EquipoNombre"
+         [ngClass]="{'is-invalid': (FormReg.controls.EquipoNombre.touched || submitted)  
+            && FormReg.controls.EquipoNombre.errors}" />
+
+				<span class="text-danger" *ngIf="(FormReg.controls.EquipoNombre.touched || submitted) 
+                        && FormReg.controls.EquipoNombre.errors?.required">
                     Dato requerido.
                 </span>
-				<span class="text-danger" *ngIf="(FormReg.controls.Cantidadequileados.touched || submitted) 
-                       && FormReg.controls.Cantidadequileados.errors?.pattern">
+				<span class="text-danger" *ngIf="(FormReg.controls.EquipoNombre.touched || submitted) 
+                       && (FormReg.controls.EquipoNombre.errors?.minlength || FormReg.controls.EquipoNombre.errors?.maxlength) ">
+                    Dato texto, 2 a 55 caracteres.
+                </span>
+			</div>
+		</div>
+
+		<!--campo EquipoRanking-->
+		<div class="form-group row">
+			<label class="col-form-label col-sm-2 col-sm-offset-2" for="EquipoRanking">
+                Ranking <span class="text-danger">*</span>
+            </label>
+			<div class="col-sm-6">
+				<input type="text" name="EquipoRanking" class="form-control" formControlName="EquipoRanking"
+        [ngClass]="{'is-invalid': (FormReg.controls.EquipoRanking.touched || submitted)  
+            && FormReg.controls.EquipoRanking.errors}" />
+				<span class="text-danger" *ngIf="(FormReg.controls.EquipoRanking.touched || submitted) 
+                       && FormReg.controls.EquipoRanking.errors?.required">
+                    Dato requerido.
+                </span>
+				<span class="text-danger" *ngIf="(FormReg.controls.EquipoRanking.touched || submitted) 
+                       && FormReg.controls.EquipoRanking.errors?.pattern">
                     Dato numérico, 13 dígitos.
                 </span>
 			</div>
 		</div>
 
-
-		<!--campo FechaFundacion-->
-		<div class="form-group row">
-			<label class="col-form-label col-sm-2 col-sm-offset-2">Fecha de Fundacion <span
-                    class="text-danger">*</span></label>
-			<div class="col-sm-6">
-				<input class="form-control"
-                           name="FechaFundacion" formControlName="FechaFundacion"
-                           [ngClass]="{'is-invalid': (FormReg.controls.FechaFundacion.touched || submitted)  
-            && FormReg.controls.FechaFundacion.errors}" />
-
-				<span class="text-danger" *ngIf="(FormReg.controls.FechaFundacion.touched || submitted) 
-                       && FormReg.controls.FechaFundacion.errors?.required">
-                    Dato requerido.
-                </span>
-				<span class="text-danger" *ngIf="(FormReg.controls.FechaFundacion.touched || submitted) 
-                       && FormReg.controls.FechaFundacion.errors?.pattern">
-                    Dato fecha, formato dd/mm/aaaa.
-        </span>
-			</div>
-		</div>
 	</fieldset>
 
 	<!-- Botones Grabar, Cancelar/Volver' -->

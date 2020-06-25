@@ -42,11 +42,9 @@ export class EquiposComponent implements OnInit {
 
   ngOnInit() {
     this.Buscar();
-    this.FormFiltro = this.formBuilder.group({
-      RazonSocial: [""]
-    });
+    this.FormFiltro = this.formBuilder.group({});
     this.FormReg = this.formBuilder.group({
-      RazonSocial: [
+      NombreEquipo: [
         "",
         [Validators.required, Validators.minLength(2), Validators.maxLength(55)]
       ],
@@ -54,18 +52,9 @@ export class EquiposComponent implements OnInit {
         null,
         [Validators.required, Validators.pattern("[0-9]{1,7}")]
       ],
-      CantidadEmpleados: [
+      EquipoRanking: [
         null,
         [Validators.required, Validators.pattern("[0-9]{1,7}")]
-      ],
-      FechaFundacion: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern(
-            "(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}"
-          )
-        ]
       ]
     });
   }
