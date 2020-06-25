@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class EquiposService {
   resourceURL: string;
   constructor(private httpClient: HttpClient) {
-    this.resourceURL = "https://pavii.ddns.net/api/Equipos/";
+    this.resourceURL = "https://pavii.ddns.net/api/equipos";
   }
   get():Observable<Equipo[]> {
     return this.httpClient.get<Equipo[]>(this.resourceURL);
